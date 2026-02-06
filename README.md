@@ -17,7 +17,7 @@ brew install ollama
 ollama serve
 
 # 3. Download a model (Terminal 2)
-ollama pull llama2
+ollama pull llama3.2
 ```
 
 **📖 For detailed setup instructions, see [OLLAMA_SETUP.md](OLLAMA_SETUP.md)**
