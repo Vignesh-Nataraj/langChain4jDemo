@@ -1,0 +1,269 @@
+{
+  "info": {
+    "name": "LangChain4j Demo API",
+    "description": "Complete API collection for testing LangChain4j features with Ollama",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Basic Chat",
+      "item": [
+        {
+          "name": "Simple Chat",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"What is artificial intelligence?\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/basic-chat/chat"}
+          }
+        },
+        {
+          "name": "Ask Question",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"What is the capital of France?\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/basic-chat/question"}
+          }
+        },
+        {
+          "name": "Generate Code",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Create a Java function to check if a number is prime\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/basic-chat/generate-code"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Conversational Chat",
+      "item": [
+        {
+          "name": "Chat with Memory",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"My name is John and I like pizza\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/conversational-chat/chat"}
+          }
+        },
+        {
+          "name": "Follow-up Question",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"What is my name and what do I like?\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/conversational-chat/chat"}
+          }
+        },
+        {
+          "name": "Clear Memory",
+          "request": {
+            "method": "POST",
+            "url": {"raw": "http://localhost:8080/api/conversational-chat/clear"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. RAG (Knowledge Base)",
+      "item": [
+        {
+          "name": "Add Single Document",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"LangChain4j is a Java library for building LLM applications\",\n  \"id\": \"doc1\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/rag/add-document"}
+          }
+        },
+        {
+          "name": "Add Multiple Documents",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"texts\": [\n    \"Ollama is a tool for running LLMs locally on your computer\",\n    \"Spring Boot is a Java framework for building web applications\",\n    \"Vector embeddings represent text as numerical vectors\",\n    \"RAG combines retrieval and generation for better AI responses\"\n  ]\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/rag/add-documents"}
+          }
+        },
+        {
+          "name": "Search Similar",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"What is LangChain?\",\n  \"maxResults\": 3\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/rag/search"}
+          }
+        },
+        {
+          "name": "Ask Question (RAG)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"What is Ollama and how does it work?\",\n  \"maxResults\": 3\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/rag/ask"}
+          }
+        },
+        {
+          "name": "Ask with Sources",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question\": \"What is Spring Boot?\",\n  \"maxResults\": 3\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/rag/ask-with-sources"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. AI Services",
+      "item": [
+        {
+          "name": "Sentiment Analysis",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"This product is absolutely amazing! I love it so much!\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/ai-services/sentiment"}
+          }
+        },
+        {
+          "name": "Summarize Text",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Artificial intelligence is revolutionizing many industries. From healthcare to finance, AI is being used to solve complex problems. Machine learning, a subset of AI, allows computers to learn from data without being explicitly programmed. Deep learning, using neural networks, has achieved remarkable results in image recognition and natural language processing.\",\n  \"maxWords\": 30\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/ai-services/summarize"}
+          }
+        },
+        {
+          "name": "Translate Text",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"Hello, how are you today?\",\n  \"targetLanguage\": \"Spanish\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/ai-services/translate"}
+          }
+        },
+        {
+          "name": "Generate Code",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"language\": \"Python\",\n  \"description\": \"function to calculate factorial of a number\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/ai-services/generate-code"}
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Tools (Function Calling)",
+      "item": [
+        {
+          "name": "Calculator - Addition",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"What is 25 plus 37?\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/tools/chat"}
+          }
+        },
+        {
+          "name": "Calculator - Complex",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Calculate the square root of 144, then multiply by 5\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/tools/chat"}
+          }
+        },
+        {
+          "name": "Weather Tool",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"What's the weather in San Francisco?\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/tools/chat"}
+          }
+        },
+        {
+          "name": "Data Store - Save",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"Store the value 'Hello World' with key 'greeting'\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/tools/chat"}
+          }
+        },
+        {
+          "name": "Data Store - Retrieve",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"What is stored in the key 'greeting'?\"\n}"
+            },
+            "url": {"raw": "http://localhost:8080/api/tools/chat"}
+          }
+        }
+      ]
+    }
+  ]
+}
